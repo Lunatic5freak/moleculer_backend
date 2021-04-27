@@ -46,10 +46,6 @@ broker.createService({
                     res.cookies.set('token',ctx.meta.token)
                     return data
                 },
-                cors:{
-                    origin:["https://moleculerbackend.herokuapp.com/","http://127.0.0.1:3000/"],
-                    method:["GET","OPTIONS", "POST", "PUT", "DELETE"]
-                },
                 aliases:{
                     "POST login":"auth.login"
                 }
