@@ -27,11 +27,11 @@ broker.createService({
     settings:{
         port:process.env.PORT ||7070,
         cors:{
-            origin: ["https://moleculerbackend.herokuapp.com/","http:127.0.0.1:3000"],
+            origin: ["https://livingdead.herokuapp.com/","http:127.0.0.1:3000"],
             // Configures the Access-Control-Allow-Methods CORS header. 
             methods: ["GET","OPTIONS", "POST", "PUT", "DELETE"],
             // Configures the Access-Control-Allow-Headers CORS header.
-            allowedHeaders: ["Application-Content","Set-Cookie","Content-Type","KEep-Alive"],
+            allowedHeaders: "*",
             // Configures the Access-Control-Expose-Headers CORS header.
             exposedHeaders:"*",
             // Configures the Access-Control-Allow-Credentials CORS header.
