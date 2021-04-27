@@ -7,11 +7,12 @@ const bcrypt=require('bcrypt')
 const jwt=require('jsonwebtoken')
 const dburl=require('./../config/db.config')
 require('dotenv').config()
+console.log(dburl.url);
 module.exports={
     name:"users",
     //mongodb+srv:livingdead:lucky7538@cluster0.baxgw.mongodb.net/test
     mixins:[Db],
-    adapter:new Mongooseadapter("mongodb+srv://livingdead:lucky7538@cluster0.baxgw.mongodb.net/test",{
+    adapter:new Mongooseadapter(dburl.url,{
         keepAlive:true
     }),
     model:db.users,

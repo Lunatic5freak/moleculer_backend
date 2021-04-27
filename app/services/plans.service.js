@@ -3,12 +3,13 @@ const Plan=db.plans;
 const Db=require('moleculer-db')
 const Mongooseadapter=require('moleculer-db-adapter-mongoose');
 const jwt = require('jsonwebtoken');
+const dburl=require('./../config/db.config')
 require('dotenv').config()
 
 module.exports={
     name:"plans",
     mixins:[Db],
-    adapter:new Mongooseadapter("mongodb+srv://livingdead:lucky7538@cluster0.baxgw.mongodb.net/test",{
+    adapter:new Mongooseadapter(dburl.url,{
         keepAlive:true
     }),
     model:db.plans,

@@ -2,7 +2,7 @@ const Moleculer=require('moleculer')
 const ApiGatewayService=require('moleculer-web')
 const path=require('path')
 const cookies=require('cookies')
-const cors=require('cors')
+require('dotenv').config()
 
 const broker=new Moleculer.ServiceBroker({
     logger:console,
@@ -27,12 +27,11 @@ broker.createService({
     settings:{
         port:process.env.PORT ||7070,
         cors:{
-            origin: ["https://livingdead.herokuapp.com/","http://127.0.0.1:3000"],
+            origin: "*",
             // Configures the Access-Control-Allow-Methods CORS header. 
             methods: ["GET","OPTIONS", "POST", "PUT", "DELETE"],
             // Configures the Access-Control-Allow-Headers CORS header.
             allowedHeaders: "*",
-            "Access-Control-Allow-Origin":"*",
             // Configures the Access-Control-Expose-Headers CORS header.
             exposedHeaders:"*",
             // Configures the Access-Control-Allow-Credentials CORS header.
@@ -46,6 +45,10 @@ broker.createService({
                     console.log('ctx meta toke='+ctx.meta.token);
                     res.cookies.set('token',ctx.meta.token)
                     return data
+                },
+                cors:{
+                    origin:["https://moleculerbackend.herokuapp.com/","http://127.0.0.1:3000/"],
+                    method:["GET","OPTIONS", "POST", "PUT", "DELETE"]
                 },
                 aliases:{
                     "POST login":"auth.login"
