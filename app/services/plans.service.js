@@ -25,6 +25,9 @@ module.exports={
                     validity:req.params.validity
                 })
                 const plan1=await plan.save();
+                req.meta.$responseHeaders={
+                    "Acces-Control-Allow-Origin":"*"
+                }
                 return plan1;
               }else{
                   return({msg:'unauthorized'})
