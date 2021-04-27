@@ -1,0 +1,30 @@
+{
+  "name": "backend1.0",
+  "version": "1.0.0",
+  "description": "node backend for internship",
+  "main": "server.js",
+  "scripts": {
+    "start":"node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Biswabijayee",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookies": "^0.8.0",
+    "cores": "^0.8.5",
+    "dotenv": "^8.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "moleculer": "^0.14.13",
+    "moleculer-db": "^0.8.12",
+    "moleculer-db-adapter-mongoose": "^0.8.9",
+    "moleculer-web": "^0.10.0-beta2",
+    "mongoose": "^5.12.5",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node":"14.8.0"
+  }
+    
+}
