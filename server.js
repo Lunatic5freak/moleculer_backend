@@ -31,19 +31,7 @@ broker.createService({
             // Configures the Access-Control-Allow-Methods CORS header. 
             methods: ["GET","OPTIONS", "POST", "PUT", "DELETE"],
             // Configures the Access-Control-Allow-Headers CORS header.
-            allowedHeaders: ["access-control-allow-credentials",
-            "access-control-allow-headers",
-            "access-control-allow-methods",
-           " access-control-allow-origin",
-            "access-control-expose-headers",
-            "connection",
-            "content-length",
-            "content-type",
-           " date",
-            "keep-alive",
-            "vary",
-           " x-request-id",
-           "set-Cookie"],
+            allowedHeaders: "*",
             // Configures the Access-Control-Expose-Headers CORS header.
             exposedHeaders:"*",
             // Configures the Access-Control-Allow-Credentials CORS header.
