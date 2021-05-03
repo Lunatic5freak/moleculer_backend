@@ -22,6 +22,7 @@ module.exports={
             async handler(req){
                 console.log('inside service');
                 const password=await bcrypt.hash(req.params.password,10)
+                console.log(req.params.email)
                 var user=new User({
                     name:req.params.name,
                     email:req.params.email,

@@ -14,6 +14,8 @@ module.exports={
             async handler(ctx){
                 const userid=ctx.params.userid
                 const password=ctx.params.password
+                console.log(userid)
+                console.log(password)
                 const user=await User.findOne({email:userid});
                 if(user){
                     let match=await bcrypt.compare(password,user.password);
@@ -21,7 +23,10 @@ module.exports={
                         let token=jwt.sign({email:user.email,role:user.role},process.env.SECRET_KEY);
                         ctx.meta.token=token
                         await User.update({_id:user._id},{$set:{token:token}})
-                        let user1={email:user.email,role:user.role}
+                        let user1={email:user.email,role:user.role};
+                        // ctx.meta.$responseHeaders={
+                        //     "Set-Cookie":token
+                        // }
                         return user1
                     }else{
                         let msg={msg:"wrong password"}

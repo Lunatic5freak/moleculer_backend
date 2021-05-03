@@ -7,7 +7,6 @@ module.exports=(mongoose)=>{
         email:{
             type:String,
             required:true,
-            unique:true,
             trim:true
         },
         password:{
@@ -26,7 +25,7 @@ module.exports=(mongoose)=>{
             type:String
         }
     },{timestamps:true});
-    schema.index({name:"text",email:"text"})
+    schema.index({name:"text"})
     var User=mongoose.model("User",schema);
     return User;
 }

@@ -27,13 +27,13 @@ broker.createService({
     settings:{
         port:process.env.PORT ||7070,
         cors:{
-            origin: ["https://livingdead.herokuapp.com/","http://127.0.0.1:3000/"],
+            origin: ["https://www.livingdead.herokuapp.com/","http://127.0.0.1:3000/"],
             // Configures the Access-Control-Allow-Methods CORS header. 
             methods: ["GET","OPTIONS", "POST", "PUT", "DELETE"],
             // Configures the Access-Control-Allow-Headers CORS header.
             allowedHeaders: "*",
             // Configures the Access-Control-Expose-Headers CORS header.
-            exposedHeaders:"*",
+            exposedHeaders:["set-cookie"],
             // Configures the Access-Control-Allow-Credentials CORS header.
             credentials:true,
         },
@@ -42,7 +42,6 @@ broker.createService({
                 path:'/user',
                 onAfterCall(ctx,route,req,res,data){
                     res.cookies=new cookies(req,res);
-                    console.log('ctx meta toke='+ctx.meta.token);
                     res.cookies.set('token',ctx.meta.token)
                     return data
                 },
@@ -64,7 +63,6 @@ broker.createService({
                 },
             
                 aliases:{
-                    "POST users/":"users.create",
                     "PUT users/:id":"users.update",
                     "DELETE users/:id":"users.delete",
                     "GET users/:id":"users.findOne",
@@ -90,6 +88,12 @@ broker.createService({
                aliases:{
                 "GET /":"auth.logout"
                }
+            },
+            {
+                path:'/api',
+                aliases:{
+                    "POST users/":"users.create",
+                }
             }
             
         ],
